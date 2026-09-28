@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Best Game Casino is a digital entertainment studio focused on social casino-style and casual game experiences for adult audiences." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Best Game Casino | Digital Entertainment Studio</title>
+
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,Arial,Helvetica,sans-serif;
+      background:#080d19;
+      color:#f7f9fc;
+      line-height:1.6
+    }
+    .container{width:min(1120px,calc(100% - 40px));margin:auto}
+    .site-header{
+      position:sticky;top:0;z-index:30;
+      background:rgba(8,13,25,.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .nav-wrap{
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:74px
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      color:#fff;text-decoration:none;font-weight:800
+    }
+    .brand-mark{
+      width:38px;height:38px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#f6c85f,#ff8c42);
+      color:#141414
+    }
+    .nav{display:flex;gap:28px}
+    .nav a{
+      color:#cbd3df;text-decoration:none;
+      font-size:14px;font-weight:600
+    }
+    .nav a:hover{color:#fff}
+    .menu-btn{
+      display:none;border:0;background:transparent;
+      color:#fff;font-size:26px;cursor:pointer
+    }
+
+    .hero{
+      position:relative;overflow:hidden;
+      padding:110px 0 90px
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:70px;align-items:center
+    }
+    .eyebrow,.section-label{
+      font-size:12px;
+      letter-spacing:.18em;
+      font-weight:800;
+      color:#f3c665
+    }
+    .hero h1{
+      font-size:clamp(44px,7vw,78px);
+      line-height:1.02;
+      letter-spacing:-.045em;
+      margin:18px 0 24px;
+      max-width:850px
+    }
+    .hero-copy{
+      font-size:18px;
+      color:#adb8c9;
+      max-width:650px
+    }
+    .hero-actions{
+      display:flex;gap:14px;
+      margin:32px 0 22px
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 21px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700
+    }
+    .btn-primary{background:#f3c665;color:#10131a}
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,.16);
+      color:#fff;
+      background:rgba(255,255,255,.03)
+    }
+    .disclaimer{
+      font-size:12px;
+      color:#7f8a9a
+    }
+    .hero-glow{
+      position:absolute;border-radius:50%;
+      filter:blur(90px);opacity:.18;
+      pointer-events:none
+    }
+    .glow-a{
+      width:430px;height:430px;
+      background:#f5b74d;
+      right:-120px;top:60px
+    }
+    .glow-b{
+      width:360px;height:360px;
+      background:#685df5;
+      left:-180px;bottom:-120px
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,#151e32,#0c1221);
+      border:1px solid rgba(255,255,255,.11);
+      border-radius:26px;
+      padding:22px;
+      box-shadow:0 30px 90px rgba(0,0,0,.38)
+    }
+    .card-top{
+      display:flex;justify-content:space-between;
+      font-size:11px;font-weight:800;
+      letter-spacing:.1em;color:#b9c2cf
+    }
+    .status{color:#f3c665}
+    .game-window{
+      margin:22px 0;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      background:#050912;
+      padding:14px;
+      border-radius:18px
+    }
+    .reel{
+      background:linear-gradient(180deg,#1b2740,#11192a);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      display:grid;
+      gap:10px;
+      text-align:center;
+      padding:15px 5px;
+      font-size:30px
+    }
+    .reel span:nth-child(2){
+      color:#f3c665;
+      font-weight:900
+    }
+    .meter{
+      height:8px;
+      background:#202a3b;
+      border-radius:50px;
+      overflow:hidden
+    }
+    .meter span{
+      display:block;
+      width:74%;
+      height:100%;
+      background:linear-gradient(90deg,#f3c665,#ff8d4f)
+    }
+    .mini-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:18px
+    }
+    .mini-stats div{
+      padding:14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.035)
+    }
+    .mini-stats strong,.mini-stats small{display:block}
+    .mini-stats strong{font-size:20px}
+    .mini-stats small{
+      color:#8f9bae;
+      font-size:11px
+    }
+
+    .section{padding:90px 0}
+    .alt{background:#0d1424}
+    .two-col{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:80px
+    }
+    .section h2,.section-title{
+      font-size:clamp(34px,5vw,52px);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      margin:14px 0 0
+    }
+    .section-copy{
+      color:#aeb8c7;
+      font-size:17px
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      margin-top:42px
+    }
+    .feature-card{
+      padding:28px;
+      background:#111a2d;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:20px
+    }
+    .icon{font-size:30px}
+    .feature-card h3{
+      font-size:19px;
+      margin:18px 0 8px
+    }
+    .feature-card p{
+      color:#9eabba;
+      margin:0
+    }
+
+    .value-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1px;
+      background:rgba(255,255,255,.08);
+      margin-top:34px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      overflow:hidden
+    }
+    .value{
+      background:#080d19;
+      padding:34px
+    }
+    .value span{
+      color:#f3c665;
+      font-size:12px;
+      font-weight:800
+    }
+    .value h3{
+      font-size:21px;
+      margin:10px 0
+    }
+    .value p{
+      margin:0;
+      color:#9eabba
+    }
+
+    .contact-section{padding-top:50px}
+    .contact-card{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:50px;
+      align-items:center;
+      background:linear-gradient(135deg,#151f34,#0d1424);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:28px;
+      padding:48px
+    }
+    .contact-card p{color:#9eabba}
+    .contact-box{display:grid;gap:12px}
+    .contact-box div{
+      padding:18px 20px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04)
+    }
+    .contact-box small,.contact-box strong{display:block}
+    .contact-box small{
+      color:#8894a7;
+      margin-bottom:5px
+    }
+    .contact-box strong{word-break:break-word}
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:34px 0;
+      color:#8e99aa
+    }
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:30px
+    }
+    .footer-grid p{margin:5px 0}
+    .footer-note{
+      text-align:right;
+      font-size:12px
+    }
+
+    @media(max-width:850px){
+      .menu-btn{display:block}
+      .nav{
+        position:absolute;
+        display:none;
+        top:74px;left:0;right:0;
+        padding:18px 20px;
+        background:#0c1221;
+        border-bottom:1px solid rgba(255,255,255,.08);
+        flex-direction:column
+      }
+      .nav.open{display:flex}
+      .hero-grid,.two-col,.contact-card{grid-template-columns:1fr}
+      .hero{padding-top:80px}
+      .cards{grid-template-columns:1fr}
+      .value-grid{grid-template-columns:1fr}
+      .footer-grid{flex-direction:column}
+      .footer-note{text-align:left}
+    }
+
+    @media(max-width:520px){
+      .container{width:min(100% - 28px,1120px)}
+      .hero h1{font-size:42px}
+      .hero-actions{flex-direction:column}
+      .contact-card{padding:28px}
+      .section{padding:68px 0}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Best Game Casino home">
+        <span class="brand-mark">B</span>
+        <span>Best Game Casino</span>
+      </a>
+
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#games">Games</a>
+        <a href="#values">Values</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-glow glow-a"></div>
+      <div class="hero-glow glow-b"></div>
+
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">DIGITAL ENTERTAINMENT STUDIO</span>
+
+          <h1>Games designed for fun, progression and memorable moments.</h1>
+
+          <p class="hero-copy">
+            Best Game Casino develops social casino-style and casual game experiences
+            for adult audiences, with a focus on entertainment, polished visuals and
+            accessible gameplay.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#games">Explore our games</a>
+            <a class="btn btn-secondary" href="#contact">Contact us</a>
+          </div>
+
+          <p class="disclaimer">
+            For entertainment purposes only. No real-money gambling, cash wagering or real-world prizes.
+          </p>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <div class="card-top">
+            <span>BEST GAME CASINO</span>
+            <span class="status">PLAY • ENJOY</span>
+          </div>
+
+          <div class="game-window">
+            <div class="reel"><span>★</span><span>7</span><span>♠</span></div>
+            <div class="reel"><span>♣</span><span>★</span><span>7</span></div>
+            <div class="reel"><span>7</span><span>♦</span><span>★</span></div>
+          </div>
+
+          <div class="meter"><span></span></div>
+
+          <div class="mini-stats">
+            <div><strong>01</strong><small>Fun first</small></div>
+            <div><strong>02</strong><small>Fair play</small></div>
+            <div><strong>03</strong><small>Responsible</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container two-col">
+        <div>
+          <span class="section-label">ABOUT US</span>
+          <h2>Entertainment-first game experiences.</h2>
+        </div>
+
+        <div class="section-copy">
+          <p>
+            Best Game Casino is an independent digital entertainment brand creating
+            casual and social casino-style games. Our goal is to build visually engaging
+            experiences with clear rules, smooth interactions and rewarding progression.
+          </p>
+
+          <p>
+            Our products are designed as entertainment software. We do not operate
+            real-money gambling services and we do not offer cash-out functionality.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="games" class="section alt">
+      <div class="container">
+        <span class="section-label">WHAT WE CREATE</span>
+        <h2 class="section-title">Game experiences built around simple fun.</h2>
+
+        <div class="cards">
+          <article class="feature-card">
+            <div class="icon">🎰</div>
+            <h3>Social Casino-Style Games</h3>
+            <p>
+              Entertainment-focused slot and table-inspired experiences using virtual gameplay elements only.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">🎮</div>
+            <h3>Casual Games</h3>
+            <p>
+              Easy-to-learn games with short sessions, progression systems and mobile-friendly controls.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">🏆</div>
+            <h3>Events & Progression</h3>
+            <p>
+              Seasonal challenges, achievements and non-cash rewards designed to keep gameplay fresh.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="values" class="section">
+      <div class="container">
+        <span class="section-label">OUR VALUES</span>
+
+        <div class="value-grid">
+          <div class="value">
+            <span>01</span>
+            <h3>Entertainment first</h3>
+            <p>Every product is designed primarily for fun and leisure.</p>
+          </div>
+
+          <div class="value">
+            <span>02</span>
+            <h3>Transparent gameplay</h3>
+            <p>
+              We aim for clear rules, understandable systems and honest product communication.
+            </p>
+          </div>
+
+          <div class="value">
+            <span>03</span>
+            <h3>Adult audiences</h3>
+            <p>Our social casino-style content is intended for users aged 18 or older.</p>
+          </div>
+
+          <div class="value">
+            <span>04</span>
+            <h3>Responsible design</h3>
+            <p>
+              No real-money wagering, no cash prizes and no representation that gameplay guarantees financial success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <div class="container contact-card">
+        <div>
+          <span class="section-label">CONTACT</span>
+          <h2>Let’s build enjoyable digital experiences.</h2>
+          <p>For business, publishing or product inquiries, contact our team.</p>
+        </div>
+
+        <div class="contact-box">
+          <div>
+            <small>Website</small>
+            <strong>bestgamecasino.site</strong>
+          </div>
+
+          <div>
+            <small>Email</small>
+            <strong>admin@goodgamecasinofree.world</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Best Game Casino</strong>
+        <p>Digital entertainment for adult audiences.</p>
+      </div>
+
+      <div class="footer-note">
+        <p>18+ • Entertainment only • No real-money gambling • No cash prizes</p>
+        <p>© <span id="year"></span> Best Game Casino. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('.nav');
+
+    if (menuBtn && nav) {
+      menuBtn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(open));
+      });
+
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => nav.classList.remove('open'));
+      });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
