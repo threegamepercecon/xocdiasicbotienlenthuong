@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Delete Account Xóc Đĩa Sicbo Tiến Lên Thuong</title>
+  <style>
+    :root{ --bg:#f7fbf6; --card:#ffffff; --accent:#2f9e4a; --muted:#6b7280; --shadow:0 6px 18px rgba(10,10,10,0.06); --border:#e6ece4; }
+    body{ margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:var(--bg); color:#0b1220; padding:28px; display:flex; justify-content:center; }
+    .container{ max-width:900px; width:100%; }
+    header{ background:var(--card); border-radius:12px; padding:20px; box-shadow:var(--shadow); border:1px solid var(--border); }
+    header h1{ margin:0; font-size:22px; }
+    header p{ margin:6px 0 0 0; color:var(--muted); }
+
+    .content{ margin-top:18px; background:var(--card); border-radius:12px; padding:18px; box-shadow:var(--shadow); border:1px solid var(--border); }
+    .instructions{ line-height:1.6; }
+    .instructions ol{ margin:8px 0 0 18px; }
+    .mailto{ display:inline-block; margin-top:10px; padding:8px 12px; background:#f1f6f2; border-radius:8px; color:var(--accent); text-decoration:none; border:1px solid transparent; }
+
+    .chat-card{ margin-top:16px; border-radius:10px; padding:12px; background:#fff; border:1px solid var(--border); }
+    .comments{ max-height:300px; overflow:auto; padding:6px; display:flex; flex-direction:column; gap:8px; }
+    .comment{ padding:10px; border-radius:8px; background:#fbfffb; border:1px solid #eef6ec; }
+    .comment .meta{ font-size:12px; color:var(--muted); margin-bottom:6px; }
+    .composer{ display:flex; gap:8px; margin-top:10px; }
+    textarea{ flex:1; min-height:70px; padding:10px; border-radius:8px; border:1px solid #e6ece4; resize:vertical; }
+    button{ padding:10px 14px; border-radius:8px; border:0; cursor:pointer; font-weight:600; }
+    .btn-post{ background:var(--accent); color:#fff; }
+    .btn-clear{ background:#f2f4f7; color:#111827; }
+    .muted{ color:var(--muted); font-size:13px; }
+
+    footer{ margin-top:12px; font-size:13px; color:var(--muted); }
+
+    @media (max-width:640px){ body{ padding:14px } header h1{ font-size:18px } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Delete Account Xóc Đĩa Sicbo Tiến Lên Thuong</h1>
+    </header>
+
+    <main class="content" role="main" aria-labelledby="mainTitle">
+      <h2 id="mainTitle" style="margin:0 0 10px 0">If you want delete account:</h2>
+      <div class="instructions">
+        <ol>
+          <li>Send email to: <a class="mailto" href="mailto:admin@goodgamecasinofree.world?subject=Request%20to%20delete%Xóc Đĩa Sicbo Tiến Lên Thuong%20account">admin@goodgamecasinofree.world</a></li>
+        </ol>
+      </div>
+
+      <footer>
+        <small>We will review review your request in email. Thank for all.</small>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Simple client-side comments stored in localStorage
+    const COMMENTS_KEY = 'lf_delete_comments_v1';
+    const commentsEl = document.getElementById('comments');
+    const countEl = document.getElementById('count');
+    const postBtn = document.getElementById('post');
+    const clearBtn = document.getElementById('clear');
+    const msgEl = document.getElementById('msg');
+
+    function loadComments(){
+      try{
+        const raw = localStorage.getItem(COMMENTS_KEY);
+        return raw ? JSON.parse(raw) : [];
+      }catch(e){ return []; }
+    }
+
+    function saveComments(list){
+      localStorage.setItem(COMMENTS_KEY, JSON.stringify(list));
+    }
+
+    function render(){
+      const list = loadComments();
+      commentsEl.innerHTML = '';
+      if(list.length === 0){
+        commentsEl.innerHTML = '<div class="muted">No comments yet — be the first to comment.</div>';
+      } else {
+        list.slice().reverse().forEach(c => {
+          const div = document.createElement('div'); div.className='comment'; div.setAttribute('role','listitem');
+          const meta = document.createElement('div'); meta.className='meta'; meta.textContent = c.name + ' · ' + new Date(c.ts).toLocaleString();
+          const body = document.createElement('div'); body.textContent = c.text;
+          div.appendChild(meta); div.appendChild(body);
+          commentsEl.appendChild(div);
+        });
+      }
+      countEl.textContent = list.length + ' comment' + (list.length===1 ? '' : 's');
+    }
+
+    function addComment(text){
+      const name = 'Anonymous';
+      const list = loadComments();
+      list.push({ name, text: text.trim(), ts: Date.now() });
+      saveComments(list);
+      render();
+    }
+
+    postBtn.addEventListener('click', () => {
+      const t = msgEl.value || '';
+      if(t.trim().length < 2){ alert('Please write a comment (2+ characters).'); msgEl.focus(); return; }
+      addComment(t);
+      msgEl.value = '';
+      msgEl.focus();
+    });
+
+    clearBtn.addEventListener('click', () => { msgEl.value = ''; msgEl.focus(); });
+
+    // initialize
+    render();
+  </script>
+</body>
+</html>
